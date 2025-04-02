@@ -1,5 +1,5 @@
 ---
-icon: hand-wave
+icon: code
 layout:
   title:
     visible: true
