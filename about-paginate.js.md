@@ -7,17 +7,20 @@ The initial reason for this library was, as in many cases, a own need to convert
 #### What Paginate.js can do
 
 * Create reliable paged preview of html content
-* Print&#x20;
+* Ensure that printed copies maintain the exact layout as seen in the preview.
+* Full CSS support
 
 #### What Paginate.js won't do
 
-When we first considered Frappe Framework for our company, Print Formats have been quite limited. wkhtmltopdf isn't maintained anymore and frappe\_pdff as well as Print Designer is still somewhere limited for specific needs. This lead us to the decision to develop a better solution.
-
-Frappe Betterprint is OpenSource and [available on Github - Contributions are Welcome!](https://github.com/neocode-it/frappe_betterprint)
+* Limited CSS @media print support -> based on the fact that the preview should be identical to the print.
 
 #### How is Betterprint working under the hood? <a href="#how-is-betterprint-working-under-the-hood" id="how-is-betterprint-working-under-the-hood"></a>
 
-Frappe Betterprint is heavily relying on an extended version of [paginate.js](https://github.com/neocode-it/paginatejs), which renders the html content into pages. This library has solely been developed for Frappe Betterprint. Besides this library, Betterprint is relying on [Playwright python](https://github.com/microsoft/playwright-python) to control a headless, chromium based browser and create PDF files.
+This library operates through the following steps:
+
+1. Create empty page and add page skeleton with all fixed dimensions
+2. Iterate over the source-content and copy one element after another into the current-page content. If there's a overflow, a new page will be added.
+3. After all content is rendered, the header content is set, depending on the set page content
 
 #### Who's behind Frappe Betterprint? <a href="#whos-behind-frappe-betterprint" id="whos-behind-frappe-betterprint"></a>
 
